@@ -1,11 +1,8 @@
----
 # tasks file for install_docker_compose
 
----
+- name: Install docker-compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: '755'
 
-- import_tasks: install.yml
-  tags:
-    - development
-    - docker-compose
-    - install
-    - docker-compose-install
