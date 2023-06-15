@@ -9,7 +9,7 @@
 
 - name: Add Docker repo
   get_url:
-    url: "{{ docker_repo }}"
+    url: "https://download.docker.com/linux/centos/docker-ce.repo"
     dest: /etc/yum.repos.d/docer-ce.repo
 
 - name: Enable Docker Edge & Test repo
