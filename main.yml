@@ -26,7 +26,7 @@
   hosts:
     - nombre de la maquina
   roles:
-    - install_mongo
+    - install_docker
 
 # tasks file for install_docker
 
