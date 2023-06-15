@@ -1,0 +1,11 @@
+---
+# tasks file for install_stargate
+- name: Downloading stargate file
+  get_url:
+    url: https://storage.googleapis.com/jaak-artifact/packages/stargate-fecade/stargate-fecade-v1.1.0.tar.gz
+    dest: /root/jaak/installer
+
+- name: Extracting stargate file
+  unarchive:
+    src: /root/jaak/installer/stargate-fecade-v1.1.0.tar.gz
+    dest: /root/jaak/installer/

@@ -1,0 +1,11 @@
+---
+# tasks file for install_vectorstrange
+- name: Downloading vectorstrange file
+  get_url:
+    url: https://storage.googleapis.com/jaak-artifact/jaak-vs.tar.gz
+    dest: /root/jaak/installer
+
+- name: Extracting vectorstrange file
+  unarchive:
+    src: /root/jaak/installer/jaak-vs.tar.gz
+    dest: /root/jaak/installer/

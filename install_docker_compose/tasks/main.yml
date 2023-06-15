@@ -1,0 +1,11 @@
+---
+# tasks file for install_docker_compose
+
+---
+
+- import_tasks: install.yml
+  tags:
+    - development
+    - docker-compose
+    - install
+    - docker-compose-install

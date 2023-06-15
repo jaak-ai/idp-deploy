@@ -1,0 +1,16 @@
+[Unit]
+Description=Daemon to manage JAAK-IQ
+
+[Service]
+WorkingDirectory=/opt/jaak/bin/jaak-iq
+ExecStart=/opt/jaak/bin/jaak-iq/jaak-iq
+Type=simple
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+StandardtOutput=syslog
+StandardError=syslog
+Environtment"LD_LIBRARY_PATH=/opt/jaak/bin/libs"
+
+[Install]
+WantedBy=multi-user.target

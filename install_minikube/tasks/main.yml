@@ -1,0 +1,7 @@
+---
+# tasks file for install_minikube
+
+- name: Install Minikube package
+  apt:
+    deb: "https://github.com/kubernetes/minikube/releases/download/v0.26.1/minikube_0.26-1.deb"
+    state: present

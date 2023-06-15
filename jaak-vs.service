@@ -1,0 +1,14 @@
+[Unit]
+Description=Daemon to manage JAAK-VS
+
+[Service]
+WorkingDirectory=/opt/jaak/bin/jaak-vs
+ExecStart=/opt/jaak/bin/jaak-vs/jaak-vs
+Type=simple
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+Environtment"LD_LIBRARY_PATH=/opt/jaak/bin/libs"
+
+[Install]
+WantedBy=multi-user.target

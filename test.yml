@@ -1,0 +1,10 @@
+---
+
+- name: Check connection
+  hosts: all
+  tasks:
+    - name: Check if all host is UP
+      ansible.builtin.ping:
+      #ping:
+      #retries: 10
+

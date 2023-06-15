@@ -1,0 +1,16 @@
+[Unit]
+Description=Daemon to manage JAAK-LV
+
+[Service]
+WorkingDirectory=/opt/jaak/bin/jaak-lv
+ExecStart=/opt/jaak/bin/jaak-lv/jaak-lv
+Type=simple
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+StandardtOutput=syslog
+StandardError=syslog
+Environtment"LD_LIBRARY_PATH=/opt/jaak/bin/libs"
+
+[Install]
+WantedBy=multi-user.target

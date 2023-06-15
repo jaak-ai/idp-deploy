@@ -1,0 +1,21 @@
+---
+# tasks file for install_libraries
+- name: Downloading Libraries file
+  get_url:
+    url: https://storage.googleapis.com/jaak-artifact/libs.tar.gz
+    dest: /root/jaak/installer
+
+- name: Extracting Libraries file
+  unarchive:
+    src: /root/jaak/installer/libs.tar.gz
+    dest: /root/jaak/installer/
+
+- name: Downloading dlib file
+  get_url:
+    url: https://storage.googleapis.com/jaak-artifact/libdlib.so.19.23.99
+    dest: /root/jaak/installer
+
+- name: Extracting dlib file
+  unarchive:
+    src: /root/jaak/installer/libdlib.so.19.23.99
+    dest: /root/jaak/installer/
