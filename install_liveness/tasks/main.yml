@@ -1,11 +1,23 @@
----
 # tasks file for install_liveness
-- name: Downloading liveness file
-  get_url:
-    url: https://storage.googleapis.com/jaak-artifact/jaak-lv.tar.gz
-    dest: /root/jaak/installer
+
+- name: Downloading image quality file
+  gcp_storage:
+    mode: download
+    bucket: jaak-artifact
+    object: jaak-lv.tar.gz
+    dest: /opt/jaak/bin/
 
 - name: Extracting liveness file
   unarchive:
-    src: /root/jaak/installer/jaak-lv.tar.gz
-    dest: /root/jaak/installer/
+    src: /opt/jaak/bin/jaak-iq.tar.gz
+    dest: /opt/jaak/bin/
+
+- name: Enabling service
+  systemd:
+    name: jaak-iq.service
+    enabled: yes
+
+- name: starting service
+  systemd:
+    name: jaak-iq.service
+    state: started
