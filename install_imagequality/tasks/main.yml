@@ -1,11 +1,23 @@
----
 # tasks file for install_imagequality
+
 - name: Downloading image quality file
-  get_url:
-    url: https://storage.googleapis.com/jaak-artifact/packages/binarios/jaak-iq.tar.gz
-    dest: /root/jaak/installer
+  gcp_storage:
+    mode: download
+    bucket: jaak-artifact
+    object: jaak-iq.tar.gz
+    dest: /root/jaak/bin
 
 - name: Extracting image quality file
   unarchive:
-    src: /root/jaak/installer/jaak-iq.tar.gz
-    dest: /root/jaak/installer/
+    src: /root/jaak/bin/jaak-iq.tar.gz
+    dest: /root/jaak/bin/
+
+- name: Enabling service
+  systemd:
+    name: jaak-iq.service
+    enabled: yes
+
+- name: starting service
+  systemd:
+    name: jaak-iq.service
+    state: started
