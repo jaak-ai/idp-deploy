@@ -12,6 +12,10 @@
     src: /opt/jaak/bin/jaak-iq.tar.gz
     dest: /opt/jaak/bin/
 
+- name: Move service file to system dir
+  src: jaak-iq.service
+  dest: usr/lib/systemd/system/
+
 - name: Enabling service
   systemd:
     name: jaak-iq.service

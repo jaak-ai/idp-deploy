@@ -12,12 +12,16 @@
     src: /opt/jaak/bin/nfury-fecade-v1.2.0.tar.gz
     dest: /opt/jaak/bin/
 
+- name: Move service file to system dir
+  src: jaak-fc.service
+  dest: usr/lib/systemd/system/
+
 - name: Enabling service
   systemd:
-    name: jaak-iq.service
+    name: jaak-fc.service
     enabled: yes
 
 - name: starting service
   systemd:
-    name: jaak-iq.service
+    name: jaak-fc.service
     state: started

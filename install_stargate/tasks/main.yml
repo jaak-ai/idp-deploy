@@ -1,23 +1,27 @@
 # tasks file for install_stargate
 
-- name: Downloading nfury file
+- name: Downloading stargate file
   gcp_storage:
     mode: download
     bucket: jaak-artifact
     object: stargate-fecade-v1.1.0.tar.gz
     dest: /opt/jaak/bin/
 
-- name: Extracting nfury file
+- name: Extracting stargate file
   unarchive:
     src: /opt/jaak/bin/stargate-fecade-v1.1.0.tar.gz
     dest: /opt/jaak/bin/
 
+- name: Move service file to system dir
+  src: jaak-fc.service
+  dest: usr/lib/systemd/system/
+
 - name: Enabling service
   systemd:
-    name: jaak-iq.service
+    name: jaak-fc.service
     enabled: yes
 
 - name: starting service
   systemd:
-    name: jaak-iq.service
+    name: jaak-fc.service
     state: started

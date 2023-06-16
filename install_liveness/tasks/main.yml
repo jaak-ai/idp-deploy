@@ -9,15 +9,19 @@
 
 - name: Extracting liveness file
   unarchive:
-    src: /opt/jaak/bin/jaak-iq.tar.gz
+    src: /opt/jaak/bin/jaak-lv.tar.gz
     dest: /opt/jaak/bin/
+
+- name: Move service file to system dir
+  src: jaak-lv.service
+  dest: usr/lib/systemd/system/
 
 - name: Enabling service
   systemd:
-    name: jaak-iq.service
+    name: jaak-lv.service
     enabled: yes
 
 - name: starting service
   systemd:
-    name: jaak-iq.service
+    name: jaak-lv.service
     state: started

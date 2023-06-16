@@ -1,0 +1,15 @@
+[Unit]
+Description=Daemon to manage JAAK-FC
+
+[Service]
+WorkingDirectory=/opt/jaak/bin/jaak-fc
+ExecStart=/opt/jaak/bin/jaak-fc/jaak-fc
+Type=simple
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+StandardtOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
