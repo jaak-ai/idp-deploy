@@ -5,12 +5,12 @@
     mode: download
     bucket: jaak-artifact
     object: jaak-iq.tar.gz
-    dest: /root/jaak/bin
+    dest: /opt/jaak/bin
 
 - name: Extracting image quality file
   unarchive:
-    src: /root/jaak/bin/jaak-iq.tar.gz
-    dest: /root/jaak/bin/
+    src: /opt/jaak/bin/jaak-iq.tar.gz
+    dest: /opt/jaak/bin/
 
 - name: Enabling service
   systemd:
