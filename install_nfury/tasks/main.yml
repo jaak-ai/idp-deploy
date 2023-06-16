@@ -1,11 +1,23 @@
----
 # tasks file for install_nfury
+
 - name: Downloading nfury file
-  get_url:
-    url: https://storage.googleapis.com/jaak-artifact/packages/nfury-fecade/nfury-fecade-v1.2.0.tar.gz
-    dest: /root/jaak/installer
+  gcp_storage:
+    mode: download
+    bucket: jaak-artifact
+    object: nfury-fecade-v1.2.0.tar.gz
+    dest: /opt/jaak/bin/
 
 - name: Extracting nfury file
   unarchive:
-    src: /root/jaak/installer/nfury-fecade-v1.2.0.tar.gz
-    dest: /root/jaak/installer/
+    src: /opt/jaak/bin/nfury-fecade-v1.2.0.tar.gz
+    dest: /opt/jaak/bin/
+
+- name: Enabling service
+  systemd:
+    name: jaak-iq.service
+    enabled: yes
+
+- name: starting service
+  systemd:
+    name: jaak-iq.service
+    state: started
